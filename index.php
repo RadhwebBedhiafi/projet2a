@@ -81,9 +81,11 @@
           <hr class="divider light my-4">
           <p class="text-white-50 mb-4">
 		  <?PHP
-          include "C:\wamp64\www\CRUD\views\front\core\produitC";
+          include "..\core\produitC";
           $produit1C=new ProduitC();
           $listeproduits=$produit1C->afficherproduits();
+
+          //var_dump($listeEmployes->fetchAll());
           ?>
 		  <table border="1">
 <tr>

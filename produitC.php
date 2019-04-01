@@ -42,7 +42,8 @@ function afficherProduit ($produit){
 	}
 	
 	function afficherproduits(){
-		$sql="SElECT * From produit ORDER BY idP";
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.idC= a.idC";
+		$sql="SElECT * From produit";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
