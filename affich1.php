@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Animation Utilities</title>
+  <title>Afficher Catégorie</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</div>
+        <div class="sidebar-brand-text mx-3">Anti-Gaspenisie <sup>2</div>
       </a>
 
       <!-- Divider -->
@@ -73,15 +73,15 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Catégorie</span>
         </a>
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
             <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item active" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item active" href="utilities-animation.html">Ajouter Catégorie</a>
+            <a class="collapse-item" href="affich1.php">Afficher Catégorie</a>
           </div>
         </div>
       </li>
@@ -98,7 +98,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Produit</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -329,59 +329,63 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-1 text-gray-800">Afficher Catégorie</h1>
-        <?PHP
+        <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Identifiant</th>
+                      <th>Nom Catégorie</th>
+                      <th>Famille</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    
+<?PHP
 include "../core/categorieC.php";
 $categorie1C=new CategorieC();
 $listecategories=$categorie1C->affichercategories();
 
 //var_dump($listeEmployes->fetchAll());
 ?>
-<table border="1">
-<tr>
-<td>idC</td>
-<td>Nom</td>
-<td>Famille</td>
-</tr>
 
 <?PHP
 foreach($listecategories as $row){
-	?>
-	<tr>
-	<td><?PHP echo $row['idC']; ?></td>
-	<td><?PHP echo $row['nomC']; ?></td>
-	<td><?PHP echo $row['famille']; ?></td>
-	<td><form method="POST" action="suppr1.php">
-	<input type="submit" name="supprimer" value="supprimer">
-	<input type="hidden" value="<?PHP echo $row['idC']; ?>" name="idC">
-	</form>
-	</td>
-	<td><a href="modif2.php?idC=<?PHP echo $row['idC']; ?>">
-	Modifier</a></td>
-	</tr>
-	<?PHP
+  ?>
+  <tr>
+  <td><?PHP echo $row['idC']; ?></td>
+  <td><?PHP echo $row['nomC']; ?></td>
+  <td><?PHP echo $row['famille']; ?></td>
+  <td><form method="POST" action="supprimercategorie.php">
+  <input type="submit" name="supprimer" value="Supprimer">
+  <input type="hidden" value="<?PHP echo $row['idC']; ?>" name="idC">
+  </form>
+  </td>
+  <td><a href="modifiercategorie.php?idC=<?PHP echo $row['idC']; ?>">
+  Modifier</a></td>
+  </tr>
+  <?PHP
 }
 ?>
 </table>
 
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Grow In Utility -->
-            
-
-            <!-- Fade In Utility -->
-            
-
+               
+    
+                  </tfoot>
+                  <tbody>
+                   
+                  </tbody>
+                </table>
+                <td><form method="POST" action="rechercherCategorie.php">
+<h2>Recherche :</h2>
+<br/>
+ <input value="<?PHP echo $row['idC']; ?>" name="idC" id="idC">
+ <input type="submit" name="rechercher" value="Find!">
+ </form>
+              </div>
+            </div>
           </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
+      </div>
       </div>
       <!-- End of Main Content -->
 

@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</div>
+        <div class="sidebar-brand-text mx-3">Anti-Gaspenisie <sup>2</div>
       </a>
 
       <!-- Divider -->
@@ -73,15 +73,15 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Catégorie</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
             <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="utilities-animation.html">Ajouter Catégorie</a>
+            <a class="collapse-item" href="affich1.php">Afficher Catégorie</a>
           </div>
         </div>
       </li>
@@ -98,7 +98,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Produit</span>
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -108,7 +108,7 @@
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item active" href="404.html">Afficher Produit</a>
+            <a class="collapse-item active" href="affich.php">Afficher Produit</a>
             <a class="collapse-item" href="blank.html">Ajout Produit</a>
           </div>
         </div>
@@ -329,53 +329,62 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- 404 Error Text -->
-          <div class="text-center">
-            <?PHP
-          include "../core/produitC.php";
-          $produit1C=new ProduitC();
-          $listeproduits=$produit1C->afficherproduits();
-
-          //var_dump($listeEmployes->fetchAll());
-          ?>
-		  <table border="1">
-<tr>
-<td>idP</td>
-<td>Nom</td>
-<td>Quantité</td>
-<td>Description</td>
-<td>Prix</td>>
-</tr>
-
-<?PHP
+        <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Identifiant</th>
+                      <th>Nom produit</th>
+                      <th>Quantité</th>
+                      <th>Description</th>
+                      <th>Prix</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <?PHP
+                    include "../core/produitC.php";
+                    $produit1C=new ProduitC();
+                    $listeproduits=$produit1C->afficherproduits();
+                    ?>
+                    <?PHP
 foreach($listeproduits as $row){
-	?>
-	<tr>
-	<td><?PHP echo $row['idP']; ?></td>
-	<td><?PHP echo $row['nomP']; ?></td>
-	<td><?PHP echo $row['quantiteP']; ?></td>
-	<td><?PHP echo $row['description']; ?></td>
-	<td><?PHP echo $row['prix']; ?></td>
-	<td><form method="POST" action="suppr.php">
-	<input type="submit" name="supprimer" value="supprimer">
-	<input type="hidden" value="<?PHP echo $row['idP']; ?>" name="idP">
-	</form>
-	</td>
-	<td><a href="modif.php?idP=<?PHP echo $row['idP']; ?>">
-	Modifier</a></td>
-	</tr>
-	<?PHP
+  ?>
+  <tr>
+  <td><?PHP echo $row['idP']; ?></td>
+  <td><?PHP echo $row['nomP']; ?></td>
+  <td><?PHP echo $row['quantiteP']; ?></td>
+  <td><?PHP echo $row['description']; ?></td>
+  <td><?PHP echo $row['prix']; ?></td>
+  <td><form method="POST" action="supprimerproduit.php">
+  <input type="submit" name="supprimer" value="supprimer">
+  <input type="hidden" value="<?PHP echo $row['idP']; ?>" name="idP">
+  </form>
+  </td>
+  <td><a href="modifierproduit.php?idP=<?PHP echo $row['idP']; ?>">
+  Modifier</a></td>
+  </tr>
+  <?PHP
 }
 ?>
-</table>
-            <a href="index.html">&larr; Back to Dashboard</a>
+
+               
+    
+                  </tfoot>
+
+                </table>
+                
+
+<br/>
+<td><form method="POST" action="rechercherProduit.php">
+<h2>Recherche :</h2>
+<br/>
+ <input value="<?PHP echo $row['idP']; ?>" name="idP" id="idP">
+ <input type="submit" name="rechercher" value="Find!">
+ </form>
+              </div>
+            </div>
           </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
 

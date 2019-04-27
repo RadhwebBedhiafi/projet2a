@@ -73,15 +73,15 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Catégorie</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
             <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="utilities-animation.html">Ajouter Catégorie</a>
+            <a class="collapse-item" href="affich1.php">Afficher Catégorie</a>
           </div>
         </div>
       </li>
@@ -98,7 +98,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Produit</span>
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -337,36 +337,31 @@
 </head>
 <body>
 <form method="POST" action="ajoutproduit.php">
-<table>
-<caption>Ajouter Produit</caption>
-<tr>
-<td>identifiant</td>
-<td><input type="number" name="idP"></td>
-</tr>
-<tr>
-<td>Nom</td>
-<td><input type="text" name="nomP"></td>
-</tr>
-<tr>
-<td>Quantité</td>
-<td><input type="number" name="quantiteP"></td>
-</tr>
-<tr>
-<td>Description</td>
-<td><input type="text" name="description"></td>
-</tr>
-<tr>
-<td>Prix</td>
-<td><input type="number" name="prix"></td>
-</tr>
- <tr>
-<td> <label>File: </label><input type="file" name="image" /></td>
-</tr>
-<tr>
-<td></td>
-<td><input type="submit" name="ajouter" value="ajouter" , enctype="multipart/form-data"></td>
-</tr>
-</table>
+                                        <div class="form-group">
+                                            <label for="card-number" class="form-label">Identifiant *</label>
+                                            <input class="form-control" type="number" name="idP" placeholder="id Produit" onkeyup="NumbersOnly(this)" required class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-number" class="form-label">Nom *</label>
+                                            <input class="form-control" type="text" name="nomP" placeholder="nom Produit"  onkeyup="lettersOnly(this)" required class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-number" class="form-label">Quantité *</label>
+                                            <input class="form-control" type="number" name="quantiteP" placeholder="Quantité du produit"  onkeyup=" NumbersOnly(this)"  required class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-number" class="form-label">Description *</label>
+                                            <input class="form-control" type="text" name="description" placeholder="Quantité du produit" onkeyup="lettersOnly(this)" required class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-number" class="form-label">Prix *</label>
+                                            <input class="form-control" type="number" name="prix" placeholder="Prix du produit" onkeyup="NumbersOnly(this)" required class="form-control">
+                                        </div>
+
+                                        
+
+
+<td><input type="submit" name="ajouter" value="Ajouter Produit!"></td>
 </form>
 </body>
 
